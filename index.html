@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Exclusive luxury lakefront villa on Muttukadu Lake. 7,700 sq ft architectural masterpiece with premium materials, swimming pool, and mature gardens. Contact for private viewing.">
+    <title>Luxury Lakefront Villa | Muttukadu Exclusive Estate</title>
+    <link rel="preload" as="image" href="images/hero.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #d4af37;
+            --deep-blue: #1a2332;
+            --soft-cream: #f8f6f3;
+            --text-gray: #4a5568;
+            --border-light: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text-gray);
+            background: var(--soft-cream);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--deep-blue) 0%, #2d3748 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-gold);
+            letter-spacing: 2px;
+        }
+
+        .contact-btn {
+            background: var(--primary-gold);
+            color: var(--deep-blue);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: #f0d058;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+        }
+
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6));
+            z-index: 1;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary-gold);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h3 {
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery {
+            background: white;
+            padding: 5rem 2rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            font-size: 0.9rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .spec-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .spec-category h3 {
+            color: var(--deep-blue);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-gold);
+            padding-bottom: 0.5rem;
+        }
+
+        .spec-category ul {
+            list-style: none;
+        }
+
+        .spec-category li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .spec-category li:before {
+            content: '✓';
+            color: var(--primary-gold);
+            font-weight: bold;
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .amenity-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .amenity-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .amenity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact {
+            background: var(--deep-blue);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .contact h2 {
+            color: var(--primary-gold);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item .icon {
+            font-size: 2rem;
+            color: var(--primary-gold);
+        }
+
+        .footer {
+            background: #0f1419;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">MUTTUKADU ESTATE</div>
+            <a href="tel:+13124422343" class="contact-btn">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <img src="images/hero.jpg" alt="Luxury Lakefront Villa" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="hero-content" style="position: relative; z-index: 2;">
+            <h1>Luxury Lakefront Living</h1>
+            <p>An Architectural Masterpiece on Muttukadu Lake</p>
+            <a href="#gallery" class="contact-btn" style="font-size: 1.1rem;">Explore Property</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section">
+        <h2 class="section-title">Exclusive Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏛️</div>
+                <h3>Architectural Excellence</h3>
+                <p>45-foot deep reinforced concrete pile foundation designed to last centuries. Built as a multigenerational family home with the ability to support additional floors.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌊</div>
+                <h3>Prime Lakefront Location</h3>
+                <p>The only layout alongside Muttukadu Lake on OMR side, closest to the city. No other such development possible due to surrounding villages along the coast.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Premium Materials</h3>
+                <p>Thick slab European Botticino marble throughout, solid Burma teak doors and windows, hand-carved decorative work by Sabathi temple masons from Karnataka.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">♿</div>
+                <h3>Universal Access</h3>
+                <p>Fully Vastu compliant and accessible. Elevator shaft from ground to terrace, every part accessible by wheelchair. 12-16 foot ceiling heights for grandeur.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🏊</div>
+                <h3>Spectacular Pool</h3>
+                <p>36' x 14' swimming pool with 5-foot reinforced concrete walls that will never crack. Blue sapphire granite floor, brand new motor, and superior filtration.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌺</div>
+                <h3>Mature Gardens</h3>
+                <p>10-year-old flowering gardens carefully nurtured to perfection. Flowering trees line the entire 1st East Cross Street, creating a stunning botanical environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section class="gallery" id="gallery">
+        <h2 class="section-title">Property Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox('images/front-exterior.jpg')">
+                <img src="images/front-exterior.jpg" alt="Front Exterior View" loading="lazy">
+                <div class="gallery-caption">Majestic Front Exterior - Architectural Grandeur</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/lakefront.jpg')">
+                <img src="images/lakefront.jpg" alt="Lakefront View" loading="lazy">
+                <div class="gallery-caption">Serene Muttukadu Lake Views</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/evening-exterior.jpg')">
+                <img src="images/evening-exterior.jpg" alt="Evening Exterior" loading="lazy">
+                <div class="gallery-caption">Evening Ambiance - Exterior Lighting</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/living-room.jpg')">
+                <img src="images/living-room.jpg" alt="Grand Living Room" loading="lazy">
+                <div class="gallery-caption">Grand Living Room with Marble Floors</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/terrace.jpg')">
+                <img src="images/terrace.jpg" alt="Ornate Terrace" loading="lazy">
+                <div class="gallery-caption">Terrace with Decorative Columns</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/master-bedroom.jpg')">
+                <img src="images/master-bedroom.jpg" alt="Master Bedroom" loading="lazy">
+                <div class="gallery-caption">Master Bedroom - Wood-Paneled Ceiling</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/lake-panorama.jpg')">
+                <img src="images/lake-panorama.jpg" alt="Lake Panorama" loading="lazy">
+                <div class="gallery-caption">Panoramic Lake View from Property</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/lake-panorama.jpg')">
+                <img src="images/lake-panorama.jpg" alt="Swimming Pool" loading="lazy">
+                <div class="gallery-caption">Swimming Pool at Dusk</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/billiards.jpg')">
+                <img src="images/billiards.jpg" alt="Billiards Room" loading="lazy">
+                <div class="gallery-caption">Billiards Room with Custom Woodwork</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/kitchen.jpg')">
+                <img src="images/kitchen.jpg" alt="Teak Kitchen" loading="lazy">
+                <div class="gallery-caption">Custom Teak Kitchen</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/staircase.jpg')">
+                <img src="images/staircase.jpg" alt="Staircase" loading="lazy">
+                <div class="gallery-caption">Grand Staircase with Ornate Details</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/dining.jpg')">
+                <img src="images/dining.jpg" alt="Dining Area" loading="lazy">
+                <div class="gallery-caption">Elegant Dining Area</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/garden.jpg')">
+                <img src="images/garden.jpg" alt="Garden View" loading="lazy">
+                <div class="gallery-caption">Mature Flowering Gardens</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/bedroom-suite.jpg')">
+                <img src="images/bedroom-suite.jpg" alt="Bedroom Suite" loading="lazy">
+                <div class="gallery-caption">Luxurious Bedroom Suite</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/billiards.jpg')">
+                <img src="images/billiards.jpg" alt="Interior Detail" loading="lazy">
+                <div class="gallery-caption">Detailed Interior Craftsmanship</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/lake-sunset.jpg')">
+                <img src="images/lake-sunset.jpg" alt="Lake Sunset" loading="lazy">
+                <div class="gallery-caption">Sunset Over Muttukadu Lake</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/evening-exterior.jpg')">
+                <img src="images/evening-exterior.jpg" alt="Courtyard" loading="lazy">
+                <div class="gallery-caption">Private Courtyard Area</div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('images/lake-sunset.jpg')">
+                <img src="images/lake-sunset.jpg" alt="Night View" loading="lazy">
+                <div class="gallery-caption">Property Illuminated at Night</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specifications -->
+    <section class="section">
+        <h2 class="section-title">Property Specifications</h2>
+        <div class="specs-grid">
+            <div class="spec-category">
+                <h3>Land & Building</h3>
+                <ul>
+                    <li>Total ground area: 3.8 grounds</li>
+                    <li>Built-up carpet: 7,700 sq feet</li>
+                    <li>45-foot deep pile foundation to bedrock</li>
+                    <li>32 sets of double pillars (1 foot diameter)</li>
+                    <li>House raised 8 feet on mass concrete</li>
+                    <li>Ceiling heights: 12-16 feet</li>
+                    <li>Open on all sides with lake views</li>
+                    <li>Elevator shaft ground to terrace</li>
+                </ul>
+            </div>
+            
+            <div class="spec-category">
+                <h3>Premium Materials</h3>
+                <ul>
+                    <li>European Botticino marble throughout</li>
+                    <li>3-piece high marble skirting</li>
+                    <li>Bathroom walls fully marbled</li>
+                    <li>Solid Burma teak doors & windows</li>
+                    <li>Antique marble & mother-of-pearl fixtures</li>
+                    <li>Stained glass light fittings</li>
+                    <li>Hand-carved exterior stucco work</li>
+                    <li>Wood-paneled ceilings</li>
+                </ul>
+            </div>
+            
+            <div class="spec-category">
+                <h3>Modern Amenities</h3>
+                <ul>
+                    <li>Concealed TV, internet, security cabling</li>
+                    <li>Concealed AC units behind woodwork</li>
+                    <li>Ample light and power points</li>
+                    <li>Fully waterproofed terrace</li>
+                    <li>Special skyview room on terrace</li>
+                    <li>Floor-to-ceiling wardrobes</li>
+                    <li>Brand new DG and security cameras</li>
+                    <li>All connections established</li>
+                </ul>
+            </div>
+            
+            <div class="spec-category">
+                <h3>Swimming Pool</h3>
+                <ul>
+                    <li>Dimensions: 36 feet x 14 feet</li>
+                    <li>5-foot reinforced concrete walls</li>
+                    <li>Crack-proof construction</li>
+                    <li>Blue sapphire granite floor</li>
+                    <li>Brand new motor</li>
+                    <li>Superior filtration system</li>
+                </ul>
+            </div>
+            
+            <div class="spec-category">
+                <h3>Security & Perimeter</h3>
+                <ul>
+                    <li>400 running feet compound wall</li>
+                    <li>20 feet high with barbed wire</li>
+                    <li>Deep foundation for sandy soil</li>
+                    <li>Complete privacy and security</li>
+                    <li>Gated entry</li>
+                </ul>
+            </div>
+            
+            <div class="spec-category">
+                <h3>Custom Furniture Included</h3>
+                <ul>
+                    <li>All furniture made to order</li>
+                    <li>Grand dining table & chairs</li>
+                    <li>Designer solid wood sofas</li>
+                    <li>Billiards table</li>
+                    <li>Large beds with storage</li>
+                    <li>Antique chests and handles</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nearby Amenities -->
+    <section class="section" style="background: white;">
+        <h2 class="section-title">Prime Location Benefits</h2>
+        <div class="amenities-grid">
+            <div class="amenity-item">
+                <div class="amenity-icon">🏫</div>
+                <h4>International Gateway School</h4>
+                <p>Inside layout</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">🎓</div>
+                <h4>IIT Madras</h4>
+                <p>4 km away</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">🏛️</div>
+                <h4>VIT Engineering College</h4>
+                <p>7 km away</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">🏥</div>
+                <h4>Chettinad Hospital</h4>
+                <p>3 km away</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">🏥</div>
+                <h4>Kamakshi Hospital</h4>
+                <p>2 km away</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">🚇</div>
+                <h4>Metro to Siruseri</h4>
+                <p>Excellent connectivity</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">🛍️</div>
+                <h4>Marina Mall & Theatres</h4>
+                <p>2 km away</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">💰</div>
+                <h4>Government Investment</h4>
+                <p>₹4,200 crores for lake beautification, marina, docks & dinner cruises</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">🌊</div>
+                <h4>Fresh Water Lake</h4>
+                <p>Arachi Lake inside layout</p>
+            </div>
+            
+            <div class="amenity-item">
+                <div class="amenity-icon">🏘️</div>
+                <h4>Exclusive Layout</h4>
+                <p>30 & 50 ft cross streets, 60 ft main street</p>
+            </div>
+        </div>
+        
+        <div style="margin-top: 4rem; padding: 2rem; background: var(--soft-cream); border-radius: 8px; border-left: 4px solid var(--primary-gold);">
+            <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">🏆 Unique Investment Opportunity</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                This is the <strong>only lakefront layout on the Muttukadu Lake OMR side</strong>, and the closest to the city. 
+                With ₹4,200 crores sanctioned by the government for Muttukadu Lake development including dredging, beautification, 
+                marina, docks, and dinner cruises, this property represents an exceptional legacy investment for generations to come.
+            </p>
+        </div>
+    </section>
+
+    <!-- Layout Information -->
+    <section class="section">
+        <h2 class="section-title">Property Layout</h2>
+        <div style="background: white; padding: 3rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">Level 0</h3>
+                    <p>Caretaker quarters</p>
+                </div>
+                
+                <div>
+                    <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">Level 1</h3>
+                    <p>Two spacious bedrooms</p>
+                </div>
+                
+                <div>
+                    <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">Level 2</h3>
+                    <p>Three bedrooms (one convertible to kitchen - plumbing ready)</p>
+                </div>
+                
+                <div>
+                    <h3 style="color: var(--deep-blue); margin-bottom: 1rem;">Level 3</h3>
+                    <p>Skyview room + terrace space for 2 more bedrooms or additional floors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section">
+            <h2 class="section-title">Schedule Your Private Viewing</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 2rem auto;">
+                This exceptional lakefront estate represents a once-in-a-lifetime opportunity to own 
+                a piece of architectural excellence in one of Chennai's most exclusive locations.
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <div>
+                        <strong>Call Now</strong>
+                        <p>+1 (312) 442-2343 or +91 98400 24528</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="icon">📧</div>
+                    <div>
+                        <strong>Email</strong>
+                        <p>rochitav@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 2rem; font-style: italic; color: var(--soft-cream);">
+                Serious inquiries only. Property viewings by appointment.
+            </p>
+            
+            <a href="tel:+13124422343" class="contact-btn" style="margin-top: 1.5rem; font-size: 1.1rem;">Schedule Viewing</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Muttukadu Lakefront Estate. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">A Once-in-a-Lifetime Opportunity</p>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close">&times;</button>
+        <img id="lightbox-img" src="" alt="Property Image">
+    </div>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(imgSrc) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = imgSrc;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .spec-category, .amenity-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
